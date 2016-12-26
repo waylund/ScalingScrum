@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script lang="javascript">
+        function testConnection() {
+            var resultSpan = document.getElementById("connectTestResult");
+            resultSpan.innerHTML = "Testing...";
+            $.get("ScalingScrumService.svc/ConnectionTest", function (data) {
+                if (data == true) {
+                    resultSpan.innerHTML = "<b>Connection Successful</b>";
+                }
+                else
+                {
+                    resultSpan.innerHTML = "<i>Connection FAILED</i>";
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <button id="TestConnectionButton" onClick="testConnection()">Test Connection</button><br/>
+    Connection Test Result: <span id="connectTestResult">Untested</span>
+</body>
+</html>
