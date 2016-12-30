@@ -7,5 +7,6 @@ namespace ScalingScrum.data
 {
     public class MySQLDataConnector : IDataConnector
     {
+
     }
 }
