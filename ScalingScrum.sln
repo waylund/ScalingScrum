@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScalingScrum", "ScalingScrum\ScalingScrum.csproj", "{AE40D135-9EE5-4C75-8768-31CA904CC8DD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScalingScrum.Test", "ScalingScrum.Test\ScalingScrum.Test.csproj", "{AE65C4F4-78A2-4C1C-A258-6D51A5E92474}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{AE40D135-9EE5-4C75-8768-31CA904CC8DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE40D135-9EE5-4C75-8768-31CA904CC8DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE40D135-9EE5-4C75-8768-31CA904CC8DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE65C4F4-78A2-4C1C-A258-6D51A5E92474}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE65C4F4-78A2-4C1C-A258-6D51A5E92474}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE65C4F4-78A2-4C1C-A258-6D51A5E92474}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE65C4F4-78A2-4C1C-A258-6D51A5E92474}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
