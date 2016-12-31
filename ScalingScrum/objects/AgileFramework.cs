@@ -8,5 +8,6 @@ namespace ScalingScrum.objects
     public class AgileFramework
     {
         public string name { get; set; }
+        public string link { get; set; }
     }
 }

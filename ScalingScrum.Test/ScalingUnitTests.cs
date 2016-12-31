@@ -27,5 +27,20 @@ namespace ScalingScrum.Test
             Assert.AreEqual("Scrum-of-Scrums", framework.name);
         }
 
+        [TestMethod]
+        public void TestGetFrameworkName2()
+        {
+            FrameworkManager manager = new FrameworkManager(dc);
+            AgileFramework framework = manager.getFrameworkById(new Guid("218d3186-7193-47cb-9897-fea51b81c030"));
+            Assert.AreEqual("Large Scale Scrum", framework.name);
+        }
+
+        [TestMethod]
+        public void TestGetFrameworkLink()
+        {
+            FrameworkManager manager = new FrameworkManager(dc);
+            AgileFramework framework = manager.getFrameworkById(new Guid("218d3186-7193-47cb-9897-fea51b81c030"));
+            Assert.AreEqual("http://less.works/", framework.link);
+        }
     }
 }
