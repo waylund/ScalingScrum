@@ -5,23 +5,64 @@
 	<meta charset="utf-8" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script lang="javascript">
-        function testConnection() {
-            var resultSpan = document.getElementById("connectTestResult");
-            resultSpan.innerHTML = "Testing...";
-            $.get("ScalingScrumService.svc/ConnectionTest", function (data) {
-                if (data == true) {
-                    resultSpan.innerHTML = "<b>Connection Successful</b>";
-                }
-                else
-                {
-                    resultSpan.innerHTML = "<i>Connection FAILED</i>";
-                }
+        function populateTable() {
+            $.get("ScalingScrumService.svc/AgileFrameworks", function (data) {
+                // Find table container div and clear it
+                var tableDiv = document.getElementById("tableContainer");
+                tableDiv.innerHTML = '';
+
+                // Create a table element
+                var table = document.createElement('TABLE');
+                table.border = 1;
+
+                // Create a table body element and add it to the table
+                var tableBody = document.createElement('TBODY');
+                table.appendChild(tableBody);
+
+                var tableHeaderRow = document.createElement('TR');
+                var tableHeader1 = document.createElement('TH');
+                tableHeader1.width = '200';
+                tableHeader1.appendChild(document.createTextNode('Framework Name'));
+                tableHeaderRow.appendChild(tableHeader1);
+                var tableHeader2 = document.createElement('TH');
+                tableHeader2.width = '50';
+                tableHeader2.appendChild(document.createTextNode('Link'));
+                tableHeaderRow.appendChild(tableHeader2);
+                var tableHeader3 = document.createElement('TH');
+                tableHeader3.width = '300';
+                tableHeader3.appendChild(document.createTextNode('Description'));
+                tableHeaderRow.appendChild(tableHeader3);
+                tableBody.appendChild(tableHeaderRow);
+
+                $.each(data, function (i, val) {
+                    var tableFrameworkRow = document.createElement('TR');
+                    var tableCellName = document.createElement('TD');
+                    tableCellName.width = '200';
+                    tableCellName.appendChild(document.createTextNode(val.name));
+                    tableFrameworkRow.appendChild(tableCellName);
+                    var tableCellLink = document.createElement('TD');
+                    tableCellLink.width = '50';
+                    var linkElem = document.createElement('A');
+                    linkElem.href = val.link;
+                    linkElem.innerText = "Link";
+                    tableCellLink.appendChild(linkElem);
+                    tableFrameworkRow.appendChild(tableCellLink);
+                    var tableCellDesc = document.createElement('TD');
+                    tableCellDesc.width = '300';
+                    tableCellDesc.appendChild(document.createTextNode(val.description));
+                    tableFrameworkRow.appendChild(tableCellDesc);
+                    tableBody.appendChild(tableFrameworkRow);
+                });
+
+                tableContainer.appendChild(table);
             });
         }
     </script>
 </head>
 <body>
-    <button id="TestConnectionButton" onClick="testConnection()">Test Connection</button><br/>
-    Connection Test Result: <span id="connectTestResult">Untested</span>
+    <button id="TestConnectionButton" onClick="populateTable()">Populate Table</button><br/>
+    <div id="tableContainer">
+
+    </div>
 </body>
 </html>
