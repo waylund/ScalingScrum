@@ -42,5 +42,13 @@ namespace ScalingScrum.Test
             AgileFramework framework = manager.getFrameworkById(new Guid("218d3186-7193-47cb-9897-fea51b81c030"));
             Assert.AreEqual("http://less.works/", framework.link);
         }
+
+        [TestMethod]
+        public void TestGetAllFrameworks()
+        {
+            FrameworkManager manager = new FrameworkManager(dc);
+            System.Collections.ArrayList frameworkSet = manager.getAllFrameworks();
+            Assert.AreEqual(2, frameworkSet.Count);
+        }
     }
 }
