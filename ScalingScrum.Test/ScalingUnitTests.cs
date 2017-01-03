@@ -44,6 +44,14 @@ namespace ScalingScrum.Test
         }
 
         [TestMethod]
+        public void TestGetFrameworkDescription()
+        {
+            FrameworkManager manager = new FrameworkManager(dc);
+            AgileFramework framework = manager.getFrameworkById(new Guid("218d3186-7193-47cb-9897-fea51b81c030"));
+            Assert.AreEqual("Larman", framework.description.Substring(0,6));
+        }
+
+        [TestMethod]
         public void TestGetAllFrameworks()
         {
             FrameworkManager manager = new FrameworkManager(dc);
