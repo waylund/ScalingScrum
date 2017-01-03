@@ -14,6 +14,10 @@ namespace ScalingScrum
     public interface IScalingScrumService
     {
         [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "AgileFrameworks/")]
+        AgileFramework[] getFrameworks();
+
+        [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "ConnectionTest/")]
         bool testConnection();
 

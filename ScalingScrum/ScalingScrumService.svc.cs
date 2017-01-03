@@ -1,4 +1,5 @@
-﻿using ScalingScrum.objects;
+﻿using ScalingScrum.data;
+using ScalingScrum.objects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,12 @@ namespace ScalingScrum
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class ScalingScrumService : IScalingScrumService
     {
+        public AgileFramework[] getFrameworks()
+        {
+            FrameworkManager manager = new FrameworkManager(new TestDataConnector());
+            return (AgileFramework[]) manager.getAllFrameworks().ToArray(typeof(AgileFramework));
+        }
+
         public bool testConnection()
         {
             return true;

@@ -29,7 +29,8 @@ namespace ScalingScrum.objects
 
         public ArrayList getAllFrameworks()
         {
-            throw new NotImplementedException();
+            ArrayList frameworks = dataConnect.getAllFrameworks();
+            return frameworks;
         }
     }
 }

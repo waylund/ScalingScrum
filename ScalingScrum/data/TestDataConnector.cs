@@ -1,8 +1,6 @@
 ﻿using ScalingScrum.objects;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.Collections;
 
 namespace ScalingScrum.data
 {
@@ -19,6 +17,14 @@ namespace ScalingScrum.data
                 framework.link = "http://less.works/";
             }
             return framework;
+        }
+
+        public ArrayList getAllFrameworks()
+        {
+            ArrayList frameworks = new ArrayList();
+            frameworks.Add(getFrameworkById(new Guid("118d3186-7193-47cb-9897-fea51b81c030")));
+            frameworks.Add(getFrameworkById(new Guid("218d3186-7193-47cb-9897-fea51b81c030")));
+            return frameworks;
         }
     }
 }
