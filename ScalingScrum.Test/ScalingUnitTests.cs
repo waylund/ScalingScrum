@@ -58,5 +58,37 @@ namespace ScalingScrum.Test
             System.Collections.ArrayList frameworkSet = manager.getAllFrameworks();
             Assert.AreEqual(2, frameworkSet.Count);
         }
+
+        [TestMethod]
+        public void TestSearchFrameworks()
+        {
+            FrameworkManager manager = new FrameworkManager(dc);
+            System.Collections.ArrayList frameworkSet = manager.searchFrameworks("Scrum");
+            Assert.AreEqual(2, frameworkSet.Count);
+        }
+
+        [TestMethod]
+        public void TestSearchFrameworks2()
+        {
+            FrameworkManager manager = new FrameworkManager(dc);
+            System.Collections.ArrayList frameworkSet = manager.searchFrameworks("Large Scale Scrum");
+            Assert.AreEqual(1, frameworkSet.Count);
+        }
+
+        [TestMethod]
+        public void TestSearchFrameworks3()
+        {
+            FrameworkManager manager = new FrameworkManager(dc);
+            System.Collections.ArrayList frameworkSet = manager.searchFrameworks("AgiLeallIanCe");
+            Assert.AreEqual(1, frameworkSet.Count);
+        }
+
+        [TestMethod]
+        public void TestSearchFrameworks4()
+        {
+            FrameworkManager manager = new FrameworkManager(dc);
+            System.Collections.ArrayList frameworkSet = manager.searchFrameworks("vodde");
+            Assert.AreEqual(1, frameworkSet.Count);
+        }
     }
 }

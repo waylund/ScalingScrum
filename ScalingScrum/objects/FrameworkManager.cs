@@ -32,5 +32,19 @@ namespace ScalingScrum.objects
             ArrayList frameworks = dataConnect.getAllFrameworks();
             return frameworks;
         }
+
+        public ArrayList searchFrameworks(string input)
+        {
+            input = input.ToLower();
+            ArrayList frameworks = dataConnect.getAllFrameworks();
+            ArrayList results = new ArrayList();
+
+            foreach (AgileFramework a in frameworks)
+            {
+                if (a.name.ToLower().Contains(input) || a.link.ToLower().Contains(input) || a.description.ToLower().Contains(input))
+                    results.Add(a);    
+            }
+            return results;
+        }
     }
 }
