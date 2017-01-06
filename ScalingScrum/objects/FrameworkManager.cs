@@ -35,15 +35,76 @@ namespace ScalingScrum.objects
 
         public ArrayList searchFrameworks(string input)
         {
-            input = input.ToLower();
+            ArrayList frameworks = searchFrameworkNames(input);
+
+            foreach (AgileFramework a in searchFrameworkLinks(input))
+            {
+                bool present = false;
+                foreach (AgileFramework f in frameworks)
+                {
+                    if (a.name.Equals(f.name) && a.link.Equals(f.link) && a.description.Equals(f.description))
+                    {
+                        present = true;
+                    } 
+                }
+                if (!present)
+                    frameworks.Add(a);
+            }
+            foreach (AgileFramework a in searchFrameworkDescriptions(input))
+            {
+                bool present = false;
+                foreach (AgileFramework f in frameworks)
+                {
+                    if (a.name.Equals(f.name) && a.link.Equals(f.link) && a.description.Equals(f.description))
+                    {
+                        present = true;
+                    }
+                }
+                if (!present)
+                    frameworks.Add(a);
+            }
+            return frameworks;
+        }
+
+        private ArrayList searchFrameworkNames(string input)
+        {
             ArrayList frameworks = dataConnect.getAllFrameworks();
             ArrayList results = new ArrayList();
 
             foreach (AgileFramework a in frameworks)
             {
-                if (a.name.ToLower().Contains(input) || a.link.ToLower().Contains(input) || a.description.ToLower().Contains(input))
-                    results.Add(a);    
+                if (a.name.ToLower().Contains(input.ToLower()))
+                    results.Add(a);
             }
+
+            return results;
+        }
+
+        private ArrayList searchFrameworkLinks(string input)
+        {
+            ArrayList frameworks = dataConnect.getAllFrameworks();
+            ArrayList results = new ArrayList();
+
+            foreach (AgileFramework a in frameworks)
+            {
+                if (a.link.ToLower().Contains(input.ToLower()))
+                    results.Add(a);
+            }
+
+            return results;
+        }
+
+        private ArrayList searchFrameworkDescriptions(string input)
+        {
+            ArrayList frameworks = dataConnect.getAllFrameworks();
+            ArrayList results = new ArrayList();
+
+            foreach (AgileFramework a in frameworks)
+            {
+                if (a.description.ToLower().Contains(input.ToLower()))
+                    results.Add(a);
+            }
+
             return results;
         }
     }
