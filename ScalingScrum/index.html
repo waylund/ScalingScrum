@@ -9,7 +9,7 @@
             var serviceTarget = "AgileFrameworks";
             var searchBox = document.getElementById("searchBox");
 
-            if (searchBox.value) {
+            if (searchBox.value.trim()) {
                 serviceTarget = "Search/"+searchBox.value;
             }
 
