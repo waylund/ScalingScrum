@@ -78,7 +78,7 @@ namespace ScalingScrum.Test
         {
             FrameworkManager manager = new FrameworkManager(dc);
             System.Collections.ArrayList frameworkSet = manager.getAllFrameworks();
-            Assert.AreEqual(2, frameworkSet.Count);
+            Assert.AreEqual(3, frameworkSet.Count);
         }
 
         #region Framework Search Tests
