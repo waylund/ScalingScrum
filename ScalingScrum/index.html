@@ -6,7 +6,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script lang="javascript">
         function populateTable() {
-            $.get("ScalingScrumService.svc/AgileFrameworks", function (data) {
+            var serviceTarget = "AgileFrameworks";
+            var searchBox = document.getElementById("searchBox");
+
+            if (searchBox.value) {
+                serviceTarget = "Search/"+searchBox.value;
+            }
+
+            $.get("ScalingScrumService.svc/"+serviceTarget, function (data) {
                 // Find table container div and clear it
                 var tableDiv = document.getElementById("tableContainer");
                 tableDiv.innerHTML = '';
@@ -60,6 +67,7 @@
     </script>
 </head>
 <body>
+    <input id="searchBox" placeholder="Search" />
     <button id="TestConnectionButton" onClick="populateTable()">Populate Table</button><br/>
     <div id="tableContainer">
 

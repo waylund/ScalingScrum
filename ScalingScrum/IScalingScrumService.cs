@@ -18,6 +18,10 @@ namespace ScalingScrum
         AgileFramework[] getFrameworks();
 
         [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "Search/{searchString}")]
+        AgileFramework[] searchFrameworks(string searchString);
+
+        [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "ConnectionTest/")]
         bool testConnection();
 

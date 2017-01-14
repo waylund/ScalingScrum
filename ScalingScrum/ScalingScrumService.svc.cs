@@ -20,6 +20,12 @@ namespace ScalingScrum
             return (AgileFramework[]) manager.getAllFrameworks().ToArray(typeof(AgileFramework));
         }
 
+        public AgileFramework[] searchFrameworks(string searchString)
+        {
+            FrameworkManager manager = new FrameworkManager(new TestDataConnector());
+            return (AgileFramework[])manager.searchFrameworks(searchString).ToArray(typeof(AgileFramework));
+        }
+
         public bool testConnection()
         {
             return true;
