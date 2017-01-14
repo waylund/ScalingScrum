@@ -39,6 +39,10 @@
                 tableHeader3.width = '300';
                 tableHeader3.appendChild(document.createTextNode('Description'));
                 tableHeaderRow.appendChild(tableHeader3);
+                var tableHeader4 = document.createElement('TH');
+                tableHeader4.width = '200';
+                tableHeader4.appendChild(document.createTextNode('Team Framework'));
+                tableHeaderRow.appendChild(tableHeader4);
                 tableBody.appendChild(tableHeaderRow);
 
                 $.each(data, function (i, val) {
@@ -58,6 +62,14 @@
                     tableCellDesc.width = '300';
                     tableCellDesc.appendChild(document.createTextNode(val.description));
                     tableFrameworkRow.appendChild(tableCellDesc);
+                    var tableCellTeam = document.createElement('TD');
+                    tableCellTeam.width = '200';
+                    var teamFill = val.teamFramework;
+                    if (val.teamFrameworkNote) {
+                        teamFill = val.teamFrameworkNote;
+                    }
+                    tableCellTeam.appendChild(document.createTextNode(teamFill));
+                    tableFrameworkRow.appendChild(tableCellTeam);
                     tableBody.appendChild(tableFrameworkRow);
                 });
 

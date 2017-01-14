@@ -17,13 +17,25 @@ namespace ScalingScrum
         public AgileFramework[] getFrameworks()
         {
             FrameworkManager manager = new FrameworkManager(new TestDataConnector());
-            return (AgileFramework[]) manager.getAllFrameworks().ToArray(typeof(AgileFramework));
+            AgileFramework[] returnArray = (AgileFramework[]) manager.getAllFrameworks().ToArray(typeof(AgileFramework));
+            foreach (AgileFramework afw in returnArray)
+            {
+                if (String.IsNullOrEmpty(afw.teamFrameworkNote))
+                    afw.teamFrameworkNote = afw.teamFramework.ToString();
+            }
+            return returnArray;
         }
 
         public AgileFramework[] searchFrameworks(string searchString)
         {
             FrameworkManager manager = new FrameworkManager(new TestDataConnector());
-            return (AgileFramework[])manager.searchFrameworks(searchString).ToArray(typeof(AgileFramework));
+            AgileFramework[] returnArray = (AgileFramework[])manager.searchFrameworks(searchString).ToArray(typeof(AgileFramework));
+            foreach (AgileFramework afw in returnArray)
+            {
+                if (String.IsNullOrEmpty(afw.teamFrameworkNote))
+                    afw.teamFrameworkNote = afw.teamFramework.ToString();
+            }
+            return returnArray;
         }
 
         public bool testConnection()
