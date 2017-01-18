@@ -35,40 +35,103 @@ namespace ScalingScrum.objects
 
         public ArrayList searchFrameworks(string input)
         {
-            ArrayList frameworks = searchFrameworkNames(input);
+            ArrayList workingFrameworkList = getAllFrameworks();
+            return searchFrameworks(input, workingFrameworkList);
+        }
+        private ArrayList searchFrameworks(string input, ArrayList workingFrameworkList)
+        {
+            ArrayList frameworks = new ArrayList();
+            char[] splitDelimiters = { ';' };
+            string[] stringList = input.Split(splitDelimiters);
 
-            foreach (AgileFramework a in searchFrameworkLinks(input))
+            if (stringList.Length > 0)
             {
-                bool present = false;
-                foreach (AgileFramework f in frameworks)
+                foreach (string str in stringList)
                 {
-                    if (a.name.Equals(f.name) && a.link.Equals(f.link) && a.description.Equals(f.description))
+                    if (str.Contains(":"))
                     {
-                        present = true;
-                    } 
-                }
-                if (!present)
-                    frameworks.Add(a);
-            }
-            foreach (AgileFramework a in searchFrameworkDescriptions(input))
-            {
-                bool present = false;
-                foreach (AgileFramework f in frameworks)
-                {
-                    if (a.name.Equals(f.name) && a.link.Equals(f.link) && a.description.Equals(f.description))
+                        switch (str.Split(':')[0].ToLower())
+                        {
+                            case "name":
+                                workingFrameworkList = searchFrameworkNames(str.Split(':')[1], workingFrameworkList);
+                                break;
+                            case "link":
+                                workingFrameworkList = searchFrameworkLinks(str.Split(':')[1], workingFrameworkList);
+                                break;
+                            case "description":
+                                workingFrameworkList = searchFrameworkDescriptions(str.Split(':')[1], workingFrameworkList);
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                    else
                     {
-                        present = true;
+                        workingFrameworkList = searchAllFrameworks(str, workingFrameworkList);
                     }
                 }
-                if (!present)
-                    frameworks.Add(a);
+                return workingFrameworkList;
             }
-            return frameworks;
+            else
+            {
+                return getAllFrameworks();
+            }
         }
+        private ArrayList searchAllFrameworks(string input, ArrayList frameworks)
+        {
+            ArrayList results = new ArrayList();
+                foreach (AgileFramework a in searchFrameworkNames(input, frameworks))
+                {
+                    bool present = false;
+                    foreach (AgileFramework f in results)
+                    {
+                        if (a.name.Equals(f.name) && a.link.Equals(f.link) && a.description.Equals(f.description))
+                        {
+                            present = true;
+                        }
+                    }
+                    if (!present)
+                        results.Add(a);
+                }
+
+                foreach (AgileFramework a in searchFrameworkLinks(input, frameworks))
+                {
+                    bool present = false;
+                    foreach (AgileFramework f in results)
+                    {
+                        if (a.name.Equals(f.name) && a.link.Equals(f.link) && a.description.Equals(f.description))
+                        {
+                            present = true;
+                        }
+                    }
+                    if (!present)
+                        results.Add(a);
+                }
+
+                foreach (AgileFramework a in searchFrameworkDescriptions(input, frameworks))
+                {
+                    bool present = false;
+                    foreach (AgileFramework f in results)
+                    {
+                        if (a.name.Equals(f.name) && a.link.Equals(f.link) && a.description.Equals(f.description))
+                        {
+                            present = true;
+                        }
+                    }
+                    if (!present)
+                        results.Add(a);
+                }
+                return results;
+            }
+        
 
         private ArrayList searchFrameworkNames(string input)
         {
             ArrayList frameworks = dataConnect.getAllFrameworks();
+            return searchFrameworkNames(input, frameworks);
+        }
+        private ArrayList searchFrameworkNames(string input, ArrayList frameworks)
+        { 
             ArrayList results = new ArrayList();
 
             foreach (AgileFramework a in frameworks)
@@ -83,6 +146,10 @@ namespace ScalingScrum.objects
         private ArrayList searchFrameworkLinks(string input)
         {
             ArrayList frameworks = dataConnect.getAllFrameworks();
+            return searchFrameworkLinks(input, frameworks);
+        }
+        private ArrayList searchFrameworkLinks(string input, ArrayList frameworks)
+        {
             ArrayList results = new ArrayList();
 
             foreach (AgileFramework a in frameworks)
@@ -97,6 +164,10 @@ namespace ScalingScrum.objects
         private ArrayList searchFrameworkDescriptions(string input)
         {
             ArrayList frameworks = dataConnect.getAllFrameworks();
+            return searchFrameworkDescriptions(input, frameworks);
+        }
+        private ArrayList searchFrameworkDescriptions(string input, ArrayList frameworks)
+        {
             ArrayList results = new ArrayList();
 
             foreach (AgileFramework a in frameworks)
