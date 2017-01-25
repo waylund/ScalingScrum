@@ -131,6 +131,22 @@ namespace ScalingScrum.Test
             Assert.AreEqual(1, frameworkSet.Count);
         }
 
+        [TestMethod]
+        public void TestSearchFrameworks7()
+        {
+            FrameworkManager manager = new FrameworkManager(dc);
+            System.Collections.ArrayList frameworkSet = manager.searchFrameworks("team:Scrum");
+            Assert.AreEqual(2, frameworkSet.Count);
+        }
+
+        [TestMethod]
+        public void TestSearchFrameworks8()
+        {
+            FrameworkManager manager = new FrameworkManager(dc);
+            System.Collections.ArrayList frameworkSet = manager.searchFrameworks(";name:scrum;vodde");
+            Assert.AreEqual(1, frameworkSet.Count);
+        }
+
         #endregion
     }
 }

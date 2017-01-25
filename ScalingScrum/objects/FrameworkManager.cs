@@ -61,6 +61,9 @@ namespace ScalingScrum.objects
                             case "description":
                                 workingFrameworkList = searchFrameworkDescriptions(str.Split(':')[1], workingFrameworkList);
                                 break;
+                            case "team":
+                                workingFrameworkList = searchFrameworkTeam(str.Split(':')[1], workingFrameworkList);
+                                break;
                             default:
                                 break;
                         }
@@ -124,12 +127,6 @@ namespace ScalingScrum.objects
                 return results;
             }
         
-
-        private ArrayList searchFrameworkNames(string input)
-        {
-            ArrayList frameworks = dataConnect.getAllFrameworks();
-            return searchFrameworkNames(input, frameworks);
-        }
         private ArrayList searchFrameworkNames(string input, ArrayList frameworks)
         { 
             ArrayList results = new ArrayList();
@@ -142,12 +139,7 @@ namespace ScalingScrum.objects
 
             return results;
         }
-
-        private ArrayList searchFrameworkLinks(string input)
-        {
-            ArrayList frameworks = dataConnect.getAllFrameworks();
-            return searchFrameworkLinks(input, frameworks);
-        }
+        
         private ArrayList searchFrameworkLinks(string input, ArrayList frameworks)
         {
             ArrayList results = new ArrayList();
@@ -161,11 +153,6 @@ namespace ScalingScrum.objects
             return results;
         }
 
-        private ArrayList searchFrameworkDescriptions(string input)
-        {
-            ArrayList frameworks = dataConnect.getAllFrameworks();
-            return searchFrameworkDescriptions(input, frameworks);
-        }
         private ArrayList searchFrameworkDescriptions(string input, ArrayList frameworks)
         {
             ArrayList results = new ArrayList();
@@ -173,6 +160,23 @@ namespace ScalingScrum.objects
             foreach (AgileFramework a in frameworks)
             {
                 if (a.description.ToLower().Contains(input.ToLower()))
+                    results.Add(a);
+            }
+
+            return results;
+        }
+
+        private ArrayList searchFrameworkTeam(string input, ArrayList frameworks)
+        {
+            ArrayList results = new ArrayList();
+
+            foreach (AgileFramework a in frameworks)
+            {
+                if (input.ToLower().Equals("scrum") && a.teamFramework == AgileFramework.TeamFramework.SCRUM)
+                    results.Add(a);
+                if (input.ToLower().Equals("kanban") && a.teamFramework == AgileFramework.TeamFramework.KANBAN)
+                    results.Add(a);
+                if (input.ToLower().Equals("xp") && a.teamFramework == AgileFramework.TeamFramework.XP)
                     results.Add(a);
             }
 

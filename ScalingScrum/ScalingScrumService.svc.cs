@@ -28,6 +28,7 @@ namespace ScalingScrum
 
         public AgileFramework[] searchFrameworks(string searchString)
         {
+            searchString = searchString.Replace("|", ":");
             FrameworkManager manager = new FrameworkManager(new TestDataConnector());
             AgileFramework[] returnArray = (AgileFramework[])manager.searchFrameworks(searchString).ToArray(typeof(AgileFramework));
             foreach (AgileFramework afw in returnArray)
@@ -46,13 +47,6 @@ namespace ScalingScrum
         public string GetData(string id)
         {
             return "The ID you entered was: " + id;
-        }
-
-        public BSClass getABSClass(string id)
-        {
-            BSClass bs = new BSClass();
-            bs.id = int.Parse(id);
-            return bs;
         }
 
         public CompositeType GetDataUsingDataContract(CompositeType composite)

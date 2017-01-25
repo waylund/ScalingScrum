@@ -76,7 +76,6 @@
     <Compile Include="data\MySQLDataConnector.cs" />
     <Compile Include="data\TestDataConnector.cs" />
     <Compile Include="objects\AgileFramework.cs" />
-    <Compile Include="objects\BSClass.cs" />
     <Compile Include="objects\FrameworkManager.cs" />
     <Compile Include="ScalingScrumService.svc.cs">
       <DependentUpon>ScalingScrumService.svc</DependentUpon>

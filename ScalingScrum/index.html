@@ -6,13 +6,17 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script lang="javascript">
         function populateTable() {
-            var serviceTarget = "AgileFrameworks";
+            var serviceTarget = "Search/";
             var searchBox = document.getElementById("searchBox");
+            var teamSelect = document.getElementById("teamFramework");
 
-            if (searchBox.value.trim()) {
-                serviceTarget = "Search/"+searchBox.value;
+            serviceTarget += searchBox.value.replace(":","|")
+                +teamSelect.options[teamSelect.selectedIndex].value;
+
+            if (serviceTarget == "Search/") {
+                serviceTarget = "AgileFrameworks";
             }
-
+      
             $.get("ScalingScrumService.svc/"+serviceTarget, function (data) {
                 // Find table container div and clear it
                 var tableDiv = document.getElementById("tableContainer");
@@ -81,6 +85,12 @@
 <body>
     <input id="searchBox" placeholder="Search" />
     <button id="TestConnectionButton" onClick="populateTable()">Populate Table</button><br/>
+    <select id="teamFramework">
+        <option value="" selected>[Team Framework]</option>
+        <option value=";team|scrum">Scrum</option>
+        <option value=";team|kanban">Kanban</option>
+        <option value=";team|xp">XP</option>
+    </select>
     <div id="tableContainer">
 
     </div>

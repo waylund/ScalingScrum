@@ -26,10 +26,6 @@ namespace ScalingScrum
         bool testConnection();
 
         [OperationContract]
-        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "BSClass/{id}")]
-        BSClass getABSClass(string id);
-
-        [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "IdCollectorTest/{id}")]
         string GetData(string id);
 
