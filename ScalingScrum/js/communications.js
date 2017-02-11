@@ -18,6 +18,8 @@
                 // Create a table element
                 var table = document.createElement('TABLE');
                 table.border = 1;
+                table.cellSpacing = 0;
+                table.className = "frameworkTable";
 
                 // Create a table body element and add it to the table
                 var tableBody = document.createElement('TBODY');

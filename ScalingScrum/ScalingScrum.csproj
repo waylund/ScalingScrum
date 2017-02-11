@@ -65,7 +65,9 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\main.css" />
     <Content Include="index.html" />
+    <Content Include="js\communications.js" />
     <Content Include="ScalingScrumService.svc" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -85,12 +87,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="js\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <Content Include="dataconnector-template.config" />
     <Content Include="dataconnector.config" />
+    <Content Include="dataconnector-template.config" />
+    <None Include="Properties\PublishProfiles\technicallyAgileServer.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
