@@ -92,6 +92,7 @@
     <Content Include="packages.config" />
     <Content Include="dataconnector.config" />
     <Content Include="dataconnector-template.config" />
+    <None Include="Properties\PublishProfiles\technicallyAgileServer.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
