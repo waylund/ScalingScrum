@@ -14,6 +14,15 @@ namespace ScalingScrum.Test
         #region Get Framework Information Pulled By ID
 
         [TestMethod]
+        public void JustATest()
+        {
+            int a = 1;
+            int b = 1;
+            int c = a + b;
+            Assert.AreEqual(2, c);
+        }
+
+        [TestMethod]
         public void TestGetFrameworkById()
         {
             FrameworkManager manager = new FrameworkManager(dc);
